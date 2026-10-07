@@ -4,6 +4,7 @@ import { REPO_URL } from "../config";
 import { t } from "../lib/i18n";
 import { useStore } from "../store";
 import { IconFolder, IconGithub, IconZip, Logo } from "./Icons";
+import { InstallButton } from "./Install";
 import { useImporter } from "./useImporter";
 
 const TILE_COLORS = [
@@ -91,10 +92,13 @@ export function Landing() {
           <Logo />
           Snapback
         </span>
-        <a className="gh" href={REPO_URL} target="_blank" rel="noreferrer">
-          <IconGithub />
-          <span>{t.source}</span>
-        </a>
+        <div className="landing-links">
+          <InstallButton className="gh install" />
+          <a className="gh" href={REPO_URL} target="_blank" rel="noreferrer" aria-label={t.source}>
+            <IconGithub />
+            <span>{t.source}</span>
+          </a>
+        </div>
       </header>
 
       <main className="landing-main">

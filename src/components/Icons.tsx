@@ -137,3 +137,25 @@ export const IconLogout = (p: P) => (
     <path d="M14 4.5h4.5v15H14M10 8l-4 4 4 4M6 12h10" />
   </svg>
 );
+
+export const IconInstall = (p: P) => (
+  <svg {...base} {...p}>
+    <rect x="6.5" y="2.5" width="11" height="19" rx="2.5" />
+    <path d="M12 7.5v7m0 0-3-3m3 3 3-3M10.5 18.5h3" />
+  </svg>
+);
+
+/** iOS Share glyph (square with an up arrow). */
+export const IconShare = (p: P) => (
+  <svg {...base} {...p}>
+    <path d="M12 3v11M8 6.5 12 3l4 3.5M8.5 10H7a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7a2 2 0 0 0-2-2h-1.5" />
+  </svg>
+);
+
+/** iOS "Add to Home Screen" glyph. */
+export const IconSquarePlus = (p: P) => (
+  <svg {...base} {...p}>
+    <rect x="3.5" y="3.5" width="17" height="17" rx="4" />
+    <path d="M12 8v8M8 12h8" />
+  </svg>
+);

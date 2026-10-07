@@ -1,0 +1,18 @@
+{
+  "id": "./",
+  "name": "Snapback",
+  "short_name": "Snapback",
+  "description": "Your Snapchat Memories, at home. 100% local, nothing uploaded.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#FFFC00",
+  "theme_color": "#FFFC00",
+  "categories": ["photo", "lifestyle", "utilities"],
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

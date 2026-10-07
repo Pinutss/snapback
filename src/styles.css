@@ -193,12 +193,18 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px clamp(16px, 4vw, 48px);
+  gap: 12px;
+  padding: calc(20px + env(safe-area-inset-top)) clamp(16px, 4vw, 48px) 20px;
   position: relative;
   z-index: 2;
 }
 
-.landing-top a.gh {
+.landing-links {
+  display: flex;
+  gap: 8px;
+}
+
+.landing-top .gh {
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -210,7 +216,12 @@ a {
   background: rgba(0, 0, 0, 0.07);
 }
 
-.landing-top a.gh svg {
+.landing-top .gh.install {
+  background: var(--snap-ink);
+  color: var(--snap);
+}
+
+.landing-top .gh svg {
   width: 18px;
   height: 18px;
 }
@@ -427,7 +438,7 @@ a {
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 8px 24px;
-  padding: 24px clamp(16px, 4vw, 48px);
+  padding: 24px clamp(16px, 4vw, 48px) calc(24px + env(safe-area-inset-bottom));
   font-size: 13px;
   font-weight: 600;
   opacity: 0.6;
@@ -577,7 +588,8 @@ a {
   gap: 12px;
   max-width: 1400px;
   margin: 0 auto;
-  padding: 14px 16px 10px;
+  padding: calc(14px + env(safe-area-inset-top)) max(16px, env(safe-area-inset-right)) 10px
+    max(16px, env(safe-area-inset-left));
 }
 
 .lib-title {
@@ -654,7 +666,7 @@ a {
 .tabs {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 0 16px 12px;
+  padding: 0 max(16px, env(safe-area-inset-right)) 12px max(16px, env(safe-area-inset-left));
 }
 
 .segmented {
@@ -696,7 +708,8 @@ a {
 .lib-body {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 0 16px 120px;
+  padding: 0 max(16px, env(safe-area-inset-right)) calc(120px + env(safe-area-inset-bottom))
+    max(16px, env(safe-area-inset-left));
 }
 
 /* Flashback */
@@ -895,8 +908,8 @@ a {
 /* Year scrubber */
 .scrubber {
   position: fixed;
-  right: 0;
-  bottom: 18px;
+  right: env(safe-area-inset-right);
+  bottom: calc(18px + env(safe-area-inset-bottom));
   width: 56px;
   z-index: 25;
   touch-action: none;
@@ -1328,4 +1341,116 @@ a {
 .paused-hint svg {
   width: 30px;
   height: 30px;
+}
+
+/* ------------------------------------------------------------------ */
+/* Install sheet (iOS)                                                 */
+/* ------------------------------------------------------------------ */
+
+.sheet-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.sheet {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 71;
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 10px 20px calc(24px + env(safe-area-inset-bottom));
+  border-radius: 28px 28px 0 0;
+  background: var(--bg);
+  color: var(--fg);
+  box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.25);
+  touch-action: none;
+}
+
+.sheet-grip {
+  width: 40px;
+  height: 5px;
+  border-radius: 5px;
+  background: var(--surface-2);
+  margin: 0 auto 14px;
+}
+
+.sheet-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+}
+
+.sheet-app {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-right: 44px;
+  margin-bottom: 20px;
+}
+
+.sheet-app > svg {
+  width: 56px;
+  height: 56px;
+  flex: none;
+}
+
+.sheet-app h2 {
+  margin: 0 0 4px;
+  font-size: 21px;
+  font-weight: 850;
+  letter-spacing: -0.02em;
+}
+
+.sheet-app p {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 550;
+  color: var(--muted);
+  line-height: 1.35;
+}
+
+.sheet-steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.sheet-steps li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: var(--surface);
+  font-weight: 650;
+  font-size: 15px;
+}
+
+.sheet-steps li span {
+  flex: 1;
+}
+
+.sheet-steps b {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 26px;
+  height: 26px;
+  border-radius: 999px;
+  background: var(--snap);
+  color: var(--snap-ink);
+  font-size: 13px;
+}
+
+.sheet-steps svg {
+  width: 24px;
+  height: 24px;
+  flex: none;
+  color: #0a84ff;
 }

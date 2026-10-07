@@ -16,6 +16,16 @@ export default function App() {
     init();
   }, [init]);
 
+  // Status bar colour (Android, installed app): yellow on the landing page, page background in the library.
+  useEffect(() => {
+    const meta = document.querySelector<HTMLMetaElement>('meta[name="theme-color"]');
+    const dark = window.matchMedia("(prefers-color-scheme: dark)");
+    const apply = () => meta?.setAttribute("content", hasLibrary ? (dark.matches ? "#000000" : "#ffffff") : "#FFFC00");
+    apply();
+    dark.addEventListener("change", apply);
+    return () => dark.removeEventListener("change", apply);
+  }, [hasLibrary]);
+
   return (
     <>
       {hasLibrary ? <Library /> : <Landing />}

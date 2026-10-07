@@ -6,7 +6,8 @@ import { clearThumbCache } from "../lib/thumbs";
 import type { Memory } from "../lib/types";
 import { useStore, type Filter } from "../store";
 import { Flashback } from "./Flashback";
-import { IconLogout, IconMore, IconPlus, IconTrash, Logo } from "./Icons";
+import { IconInstall, IconLogout, IconMore, IconPlus, IconTrash, Logo } from "./Icons";
+import { InstallButton } from "./Install";
 import { Thumb } from "./Thumb";
 import { useImporter } from "./useImporter";
 import { YearScrubber, type Mark } from "./YearScrubber";
@@ -91,6 +92,9 @@ function HeaderMenu({ onAdd }: { onAdd: () => void }) {
   }, [open]);
   return (
     <div className="lib-actions" ref={ref}>
+      <InstallButton className="icon-btn" label={t.install}>
+        <IconInstall />
+      </InstallButton>
       <button className="icon-btn" onClick={onAdd} aria-label={t.addMore} title={t.addMore}>
         <IconPlus />
       </button>

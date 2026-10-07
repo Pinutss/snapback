@@ -48,6 +48,12 @@ const fr = {
   notAffiliated: "Projet indépendant, non affilié à Snap Inc.",
   source: "Code source",
   empty: "Rien ici pour ce filtre.",
+  install: "Installer l'app",
+  installTitle: "Installer Snapback",
+  installNote: "En plein écran, hors ligne, et tes souvenirs restent sur ton téléphone.",
+  installIos1: "Touche Partager (parfois dans le menu •••)",
+  installIos2: "Choisis « Sur l'écran d'accueil »",
+  installIos3: "Ouvre Snapback depuis son icône",
 };
 
 type Dict = typeof fr;
@@ -101,6 +107,12 @@ const en: Dict = {
   notAffiliated: "Independent project, not affiliated with Snap Inc.",
   source: "Source code",
   empty: "Nothing here for this filter.",
+  install: "Install app",
+  installTitle: "Install Snapback",
+  installNote: "Full screen, works offline, and your memories stay on your phone.",
+  installIos1: "Tap Share (sometimes inside the ••• menu)",
+  installIos2: "Choose “Add to Home Screen”",
+  installIos3: "Open Snapback from its icon",
 };
 
 export const lang = typeof navigator !== "undefined" && navigator.language?.toLowerCase().startsWith("fr") ? "fr" : "en";

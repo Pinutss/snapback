@@ -39,6 +39,8 @@ in a JSON file. Snapback turns that pile back into something that feels like Mem
 - **Fast with large libraries**: a virtualized grid, thumbnails generated on demand and cached in IndexedDB.
 - **Remembers your folder** (Chrome, Edge, Brave and other Chromium browsers): reopen the library in one click.
 - **Private by design**: no server, no analytics, no network calls. Your files never leave your device.
+- **Installable app (PWA)**: add it to your home screen and it opens full screen, works offline, and on iPhone
+  your data is kept safe from Safari's 7-day storage purge.
 - Responsive, light and dark themes, French and English UI.
 
 <p align="center">
@@ -51,6 +53,17 @@ in a JSON file. Snapback turns that pile back into something that feels like Mem
 2. Tick **Export your Memories** and **Export JSON files**, then pick the date range "All time".
 3. When the email arrives, download **every** `.zip` part.
 4. Open Snapback and drop the zips (or the extracted folder).
+
+## Install it on your phone
+
+Open **https://pinutss.github.io/snapback/** and:
+
+- **iPhone / iPad**: tap *Share* (sometimes inside the ••• menu), then **Add to Home Screen**.
+- **Android**: tap **Install app** on the page (or *⋮ → Install app* in Chrome).
+- **Desktop Chrome / Edge**: click **Install app**, or the install icon in the address bar.
+
+It then runs like a regular app, offline included. The service worker only caches the app itself;
+your photos and videos never go through it.
 
 ## Run it
 
@@ -77,6 +90,7 @@ Firefox and Safari work too, but you have to pick the folder again on each visit
 | `src/lib/thumbs.ts` | Thumbnail generation (photo + video frame + overlay), cancellable LIFO queue, IndexedDB cache |
 | `src/components/YearScrubber.tsx` | Drag-through-time fast scroller |
 | `src/components/Viewer.tsx` | Full-screen viewer and stories, with gestures |
+| `pwa/sw.js` + `vite.config.ts` | Offline service worker; the build injects the list of files to precache |
 
 Stack: React, TypeScript, Vite, Motion, TanStack Virtual, zip.js, exifr, zustand.
 
@@ -106,6 +120,8 @@ pile de zips illisibles. Snapback les transforme en une vraie galerie :
 - La visionneuse plein écran gère les gestes (tap, swipe, glisser vers le bas pour fermer, appui long
   pour mettre en pause). Tu peux aussi télécharger une photo avec son texte.
 - **Rien n'est envoyé nulle part.** Tout se passe dans ton navigateur.
+- **S'installe comme une app** : sur iPhone, *Partager → Sur l'écran d'accueil* ; sur Android, bouton
+  « Installer l'app ». Elle s'ouvre en plein écran et marche hors ligne.
 
 **Récupérer l'export** : Snapchat → Paramètres → Mes données → coche « Exporter tes Memories » et
 « Exporter les fichiers JSON » → télécharge toutes les parties `.zip` → dépose-les dans Snapback.
