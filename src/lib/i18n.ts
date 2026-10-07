@@ -1,0 +1,127 @@
+const fr = {
+  tagline: "Tes Memories Snapchat, chez toi.",
+  heroTitle: "Tes souvenirs.\nPas d'abonnement.",
+  heroText:
+    "Importe ton export Snapchat et retrouve tes Memories comme dans l'app : grille, curseur des années, stories. Tout reste sur ton appareil.",
+  pickFolder: "Choisir le dossier",
+  pickZip: "Ouvrir des .zip",
+  dropHint: "ou glisse ton dossier / tes .zip ici",
+  dropNow: "Lâche, on s'occupe du reste",
+  resume: "Rouvrir ma bibliothèque",
+  privacy: "100 % local · aucun envoi · open source",
+  howTitle: "Récupérer ton export",
+  how1: "Snapchat → Paramètres → Mes données",
+  how2: "Coche « Exporter tes Memories » + JSON",
+  how3: "Télécharge toutes les parties .zip",
+  how4: "Dépose-les ici, extraites ou non",
+  scanning: "Lecture des fichiers",
+  analyzing: "Analyse des dates",
+  exif: "Lecture des EXIF",
+  filesFound: "fichiers trouvés",
+  noMedia: "Aucune photo ni vidéo trouvée ici. Choisis le dossier qui contient « memories » ou les .zip de l'export.",
+  memories: "Memories",
+  all: "Tout",
+  photos: "Photos",
+  videos: "Vidéos",
+  addMore: "Ajouter",
+  close: "Fermer",
+  closeLibrary: "Fermer la bibliothèque",
+  clearCache: "Vider le cache des miniatures",
+  flashback: "Flashback",
+  yearsAgo: (n: number) => (n === 1 ? "Il y a 1 an" : `Il y a ${n} ans`),
+  onThisDay: "Ce jour-là",
+  count: (n: number) => `${n.toLocaleString("fr-FR")} souvenir${n > 1 ? "s" : ""}`,
+  download: "Télécharger",
+  downloadWithOverlay: "Télécharger avec le texte",
+  overlayOn: "Masquer le texte",
+  overlayOff: "Afficher le texte",
+  openMap: "Voir sur la carte",
+  mute: "Couper le son",
+  unmute: "Activer le son",
+  previous: "Précédent",
+  next: "Suivant",
+  dateApprox: "date approximative",
+  notSupported: "Format non lisible par ce navigateur",
+  scrubber: "Naviguer dans le temps",
+  unsupportedPersist:
+    "Ton navigateur ne peut pas mémoriser le dossier : il faudra le resélectionner à chaque visite.",
+  notAffiliated: "Projet indépendant, non affilié à Snap Inc.",
+  source: "Code source",
+  empty: "Rien ici pour ce filtre.",
+};
+
+type Dict = typeof fr;
+
+const en: Dict = {
+  tagline: "Your Snapchat Memories, at home.",
+  heroTitle: "Your memories.\nNo subscription.",
+  heroText:
+    "Import your Snapchat export and browse your Memories like in the app: grid, year scrubber, stories. Everything stays on your device.",
+  pickFolder: "Choose folder",
+  pickZip: "Open .zip files",
+  dropHint: "or drop your folder / .zip files here",
+  dropNow: "Drop it, we'll handle the rest",
+  resume: "Reopen my library",
+  privacy: "100% local · nothing uploaded · open source",
+  howTitle: "Get your export",
+  how1: "Snapchat → Settings → My Data",
+  how2: "Tick “Export your Memories” + JSON",
+  how3: "Download every .zip part",
+  how4: "Drop them here, extracted or not",
+  scanning: "Reading files",
+  analyzing: "Sorting out dates",
+  exif: "Reading EXIF",
+  filesFound: "files found",
+  noMedia: "No photos or videos found here. Pick the folder containing “memories” or the export .zip files.",
+  memories: "Memories",
+  all: "All",
+  photos: "Photos",
+  videos: "Videos",
+  addMore: "Add",
+  close: "Close",
+  closeLibrary: "Close library",
+  clearCache: "Clear thumbnail cache",
+  flashback: "Flashback",
+  yearsAgo: (n: number) => (n === 1 ? "1 year ago" : `${n} years ago`),
+  onThisDay: "On this day",
+  count: (n: number) => `${n.toLocaleString("en-US")} memor${n > 1 ? "ies" : "y"}`,
+  download: "Download",
+  downloadWithOverlay: "Download with caption",
+  overlayOn: "Hide caption",
+  overlayOff: "Show caption",
+  openMap: "Show on map",
+  mute: "Mute",
+  unmute: "Unmute",
+  previous: "Previous",
+  next: "Next",
+  dateApprox: "approximate date",
+  notSupported: "This browser can't display this format",
+  scrubber: "Scrub through time",
+  unsupportedPersist: "Your browser can't remember the folder: you'll need to pick it again on each visit.",
+  notAffiliated: "Independent project, not affiliated with Snap Inc.",
+  source: "Source code",
+  empty: "Nothing here for this filter.",
+};
+
+export const lang = typeof navigator !== "undefined" && navigator.language?.toLowerCase().startsWith("fr") ? "fr" : "en";
+export const t: Dict = lang === "fr" ? fr : en;
+export const locale = lang === "fr" ? "fr-FR" : "en-US";
+
+const monthFmt = new Intl.DateTimeFormat(locale, { month: "long" });
+const monthYearFmt = new Intl.DateTimeFormat(locale, { month: "long", year: "numeric" });
+const shortMonthFmt = new Intl.DateTimeFormat(locale, { month: "short" });
+const fullFmt = new Intl.DateTimeFormat(locale, { weekday: "long", day: "numeric", month: "long", year: "numeric" });
+const dayFmt = new Intl.DateTimeFormat(locale, { day: "numeric", month: "short", year: "numeric" });
+const timeFmt = new Intl.DateTimeFormat(locale, { hour: "2-digit", minute: "2-digit" });
+
+const cap = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
+
+export const fmt = {
+  month: (y: number, m: number) => cap(monthFmt.format(new Date(y, m, 1))),
+  monthYear: (y: number, m: number) => cap(monthYearFmt.format(new Date(y, m, 1))),
+  shortMonth: (y: number, m: number) => cap(shortMonthFmt.format(new Date(y, m, 1)).replace(".", "")),
+  full: (t: number) => cap(fullFmt.format(t)),
+  day: (t: number) => dayFmt.format(t),
+  time: (t: number) => timeFmt.format(t),
+  duration: (s: number) => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, "0")}`,
+};
