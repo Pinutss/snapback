@@ -12,7 +12,7 @@ const base = {
   "aria-hidden": true,
 };
 
-/** Snapback mark: a yellow squircle with a rewind loop. Deliberately not Snapchat's ghost. */
+/** Snapback mark: a yellow squircle with a replay loop. Deliberately not Snapchat's ghost. */
 export function Logo(props: P) {
   return (
     <svg viewBox="0 0 64 64" aria-hidden {...props}>
@@ -22,15 +22,12 @@ export function Logo(props: P) {
         stroke="#0A0A0A"
         strokeWidth="3"
       />
-      <path
-        d="M22.5 22.5a13.4 13.4 0 1 1-3.9 9.5"
-        fill="none"
-        stroke="#0A0A0A"
-        strokeWidth="5"
-        strokeLinecap="round"
-      />
-      <path d="M14.5 17.5 24 16.5l-1 9.5z" fill="#0A0A0A" stroke="#0A0A0A" strokeWidth="2" strokeLinejoin="round" />
-      <circle cx="32" cy="32" r="3.6" fill="#0A0A0A" />
+      {/* Replay loop: clockwise from 12 to 9 o'clock, arrowhead on the tangent pointing into the gap. */}
+      <g transform="translate(0 1.5)">
+        <path d="M32 18a14 14 0 1 1-14 14" fill="none" stroke="#0A0A0A" strokeWidth="5" strokeLinecap="round" />
+        <path d="M33.5 11.5v13L23.5 18z" fill="#0A0A0A" stroke="#0A0A0A" strokeWidth="2" strokeLinejoin="round" />
+        <circle cx="32" cy="32" r="3.6" fill="#0A0A0A" />
+      </g>
     </svg>
   );
 }
